@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>QR Code Generator</title>
+  <style>
+    :root {
+      --primary-color: #ffffff;
+      --accent-color: #00c6ff;
+      --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-family);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #ff512f, #dd2476, #00c6ff);
+      background-size: 300% 300%;
+      animation: gradientShift 8s ease infinite;
+      padding: 20px;
+      color: var(--primary-color);
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(12px);
+      padding: 40px 30px;
+      border-radius: 20px;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      max-width: 380px;
+      width: 100%;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: transform 0.3s ease;
+    }
+
+    .container:hover {
+      transform: scale(1.02);
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      letter-spacing: 0.5px;
+      color: #ffffff;
+    }
+
+    .qr-wrapper {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 15px;
+    }
+
+    img {
+      max-width: 220px;
+      width: 100%;
+      border-radius: 12px;
+      border: 3px solid #ffffff;
+      box-shadow: 0 4px 20px rgba(255, 255, 255, 0.4);
+      transition: transform 0.3s ease;
+    }
+
+    img:hover {
+      transform: scale(1.05);
+    }
+
+    .note {
+      font-size: 0.95rem;
+      margin-top: 10px;
+      color: #f0f0f0;
+    }
+    .button {
+  margin-top: 15px;
+  padding: 12px 24px;
+  display: inline-block;
+  font-weight: bold;
+  font-size: 1rem;
+  text-decoration: none;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.download-btn {
+  background: #ffffff;
+  color: #00c6ff;
+}
+
+.download-btn:hover {
+  background: #f1f1f1;
+}
+
+.home-btn {
+  margin-top: 10px;
+  border: 2px solid #ffffff;
+  background: transparent;
+  color: #ffffff;
+}
+
+.home-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+
+@media (max-width: 480px) {
+  .container {
+    padding: 30px 20px;
+    border-radius: 16px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  img {
+    max-width: 180px;
+  }
+
+  .note {
+    font-size: 0.85rem;
+  }
+
+  .button {
+    font-size: 0.9rem;
+    padding: 10px 16px;
+  }
+
+  .download-btn,
+  .home-btn {
+    width: 100%;
+    margin-top: 10px;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>QR Code Generated 👍</h1>
+
+    <div class="qr-wrapper">
+      <img src="./qr-code.png" alt="QR Code" id="qr-image">
+    </div>
+
+    <div class="note" id="qr-url"></div>
+
+    <!-- Styled Buttons -->
+    <a href="./qr-code.png" download="qr-code.png" class="button download-btn">Download QR Code</a>
+    <a href="/" class="button home-btn">Generate Another</a>
+  </div>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const url = urlParams.get("url");
+    if (url) {
+      document.getElementById("qr-url").textContent = "URL: " + decodeURIComponent(url);
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QR Code Generator</title>
+  <style>
+    /* (YOUR ORIGINAL STYLE — UNCHANGED) */
+    :root {
+      --primary-color: #ffffff;
+      --button-bg: #00c6ff;
+      --button-hover: #0096c7;
+      --input-bg: #ffffffcc;
+      --font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font);
+      background: linear-gradient(135deg, #ff6a00, #ee0979, #00c6ff);
+      background-size: 300% 300%;
+      animation: bgShift 10s ease infinite;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    @keyframes bgShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      padding: 40px 30px;
+      border-radius: 20px;
+      text-align: center;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      color: #fff;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+    }
+
+    .textInput {
+      width: 100%;
+      padding: 12px 16px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      background-color: var(--input-bg);
+      outline: none;
+    }
+
+    button {
+      padding: 12px 24px;
+      font-size: 1rem;
+      background-color: var(--button-bg);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: var(--button-hover);
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      .textInput {
+        font-size: 0.95rem;
+      }
+
+      button {
+        font-size: 0.95rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Enter Text or URL to Generate QR Code</h1>
+    <form id="qrForm" action="/generate" method="POST">
+      <input type="text" name="url" class="textInput" placeholder="https://example.com" required />
+      <button type="submit">Generate</button>
+    </form>
+  </div>
+
+  <!-- Optional client-side validation -->
+  <script src="script.js"></script>
+</body>
+</html>

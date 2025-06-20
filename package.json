@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "express": "^5.1.0",
+    "fs": "^0.0.1-security",
+    "inquirer": "^12.6.3",
+    "qr-image": "^3.2.0"
+  }
+}
